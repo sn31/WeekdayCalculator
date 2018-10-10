@@ -1,6 +1,6 @@
-const anchorDate = new Date("1970-01-01");
+const anchorDate = new Date(1970, 0, 1);
 
-function leapyearChecker(year) {
+export function leapyearChecker(year) {
     //year is a number
     if (year % 4 == 0) {
         if (year % 100 == 0) {
@@ -18,7 +18,7 @@ function leapyearChecker(year) {
     else {
         return false;
     }
-};
+}
 const monthObj = {
     1: 31,
     2: 28,
@@ -32,7 +32,7 @@ const monthObj = {
     10: 31,
     11: 30,
     12: 31
-}
+};
 const DayObj = {
     0: "Thursday",
     1: "Friday",
@@ -41,9 +41,9 @@ const DayObj = {
     4: "Monday",
     5: "Tuesday",
     6: "Wednesday",
-}
-class WeekdayCalculator {
-    
+};
+export class WeekdayCalculator {
+
     constructor(inputDate, inputMonth, inputYear) {
         this.inputDate = inputDate;
         this.inputMonth = inputMonth;
@@ -52,6 +52,7 @@ class WeekdayCalculator {
     DayCal() {
         let dateDiff = this.inputDate - anchorDate.getDate();
         let totalDays = 0;
+
         for (let year = anchorDate.getFullYear(); year < this.inputYear; year++) {
             if (leapyearChecker(year) == true) {
                 totalDays += 366;
@@ -60,7 +61,7 @@ class WeekdayCalculator {
                 totalDays += 365;
             }
         }
-        for (let month = anchorDate.getMonth(); month < this.inputMonth; month++) {
+        for (let month = anchorDate.getMonth() + 1; month < this.inputMonth; month++) {
             totalDays += monthObj[month];
         }
         if (this.inputMonth > 2 && leapyearChecker(this.inputYear) == true) {
