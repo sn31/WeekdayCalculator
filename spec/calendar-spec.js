@@ -5,7 +5,7 @@ describe ("calendar test", function() {
     expect(leapyearChecker(2018)).toEqual(false);
   });
   it('should correctly determine which day of the week is the input date', function() {
-    let input = new WeekdayCalculator(4,6,2000);
-    expect(input.DayCal()).toEqual("Sunday");
+    let input = new WeekdayCalculator(3,10,2018);
+    expect(input.DayCal()).toEqual("Wednesday");
   });
 });
